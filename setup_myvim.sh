@@ -41,7 +41,7 @@ if [ -d $HOME/$MYVIM ]; then
 fi
 VIM_URL="https://github.com/zhanwwan/myvim.git"
 git clone -q ${VIM_URL}
-cp -rf $HOME/$MYVIM/.vimrc $HOME/
+cp -rf $HOME/$MYVIM/vimrc $HOME/.vimrc
 tar xzvf $HOME/$MYVIM/vim.tar.gz -C $HOME > /dev/null
 
 echo "Setup finieshed!"
