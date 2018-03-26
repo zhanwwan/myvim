@@ -70,6 +70,7 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -84,8 +85,8 @@ set fileformats=unix,dos
 map <Up> gk
 map <Down> gj
 " Set title to window
-set title
-set titlelen=150
+"set title
+"set titlelen=150
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -127,7 +128,7 @@ let Tlist_Exit_OnlyWindow=1
 let g:winManagerWindowLayout='FileExplorer|TagList'
 nmap wm :WMToggle<cr> 
 nmap cw :NERDTreeToggle <cr>
-let g:netrw_winsize = 30
+let g:netrw_winsize = 50
 nmap <silent> fe :Sexplore!<cr>
 let NERDTreeIgnore = ['\.\/$', '\.\.\/$']
 let NERDTreeWinPos = "left"
@@ -149,6 +150,14 @@ set viminfo='20,<0,f1
 " => other
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.c,*.h,*.nc match Error /\%80v.\%81v./
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.nc :call DeleteTrailingWS()
 autocmd BufWrite *.c :call DeleteTrailingWS()
