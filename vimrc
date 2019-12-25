@@ -4,26 +4,23 @@ filetype off                " required
 " set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
 " let vim-plug, required
-Plug 'junegunn/vim-easy-align'
-Plug 'skywind3000/quickmenu.vim'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'skywind3000/quickmenu.vim'
 Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/Smart-Tabs'
+" Plug 'vim-scripts/Smart-Tabs'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fholgado/minibufexpl.vim'
+" Plug 'fholgado/minibufexpl.vim'
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'tpope/vim-fugitive'
+" Plug 'altercation/vim-colors-solarized'
 " Plug 'majutsushi/tagbar'
-Plug 'yggdroot/leaderf'
-Plug 'vim-scripts/nesC'
-Plug 'vim-scripts/NesC-Syntax-Highlighting'
-Plug 'rmartinjak/vim-nesc'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'yggdroot/leaderf'
+" Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 filetype plugin indent on   " required
 
@@ -39,6 +36,8 @@ set nu!
 set history=1000
 " Show matching brackets when text indicator is over them
 set showmatch
+set wildmenu
+"set paste
 " Always show current position
 set ruler
 " Height of the command bar
@@ -123,7 +122,7 @@ set encoding=utf8
 set nocscopeverbose
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 if has("cscope")
-   set csprg=/usr/local/bin/cscope
+   set csprg=/usr/bin/cscope
    set csto=0
    set cst
    set nocsverb
@@ -160,14 +159,18 @@ let Tlist_Exit_OnlyWindow=1
 
 " NERDTree
 let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr> 
-" nmap cw :NERDTreeToggle <cr>
-nmap cw :cw <cr>
+nmap ww :NERDTreeToggle <cr>
 let g:netrw_winsize = 50
 nmap <silent> fe :Sexplore!<cr>
 let NERDTreeIgnore = ['\.\/$', '\.\.\/$']
 let NERDTreeWinPos = "left"
 let NERDTreeMouseMode = 2
+
+" Quickfix window
+" Open
+nmap cw :cw <cr>
+" Close
+nmap cc :cclose <cr>
 
 filetype plugin indent on
 let g:SuperTabRetainCompletionType=2
@@ -184,7 +187,7 @@ set viminfo='30,<0,f1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => other
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufRead,BufNewFile *.c,*.h,*.nc match Error /\%80v.\%81v./
+au BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp match Error /\%80v.\%81v./
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -194,7 +197,6 @@ func! DeleteTrailingWS()
 endfunc
 
 autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.nc :call DeleteTrailingWS()
 autocmd BufWrite *.c :call DeleteTrailingWS()
 autocmd BufWrite *.cpp :call DeleteTrailingWS()
 autocmd BufWrite *.hpp :call DeleteTrailingWS()
