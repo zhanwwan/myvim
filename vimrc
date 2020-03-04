@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'junegunn/vim-easy-align'
 " Plug 'skywind3000/quickmenu.vim'
 Plug 'morhetz/gruvbox'
-" Plug 'vim-scripts/Smart-Tabs'
+Plug 'vim-scripts/Smart-Tabs'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 " On-demand loading
